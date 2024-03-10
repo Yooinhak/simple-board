@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      },
+      "alias": {
+        "map": [
+          ["@components", "./src/components"]
+          // 다른 절대 경로들도 필요하다면 추가해주세요.
+        ],
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  }
 }
