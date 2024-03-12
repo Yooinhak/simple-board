@@ -54,6 +54,7 @@ export default function Home() {
         <button onClick={createPost}>만들기</button>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <input value={contents} onChange={(e) => setContents(e.target.value)} />
+        test
       </main>
     </>
   );
