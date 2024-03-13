@@ -15,6 +15,7 @@ const nextConfig = {
       pure: true,
     },
   },
+  pageExtensions: ["page.tsx", "api.ts"],
   serverRuntimeConfig: {
     mode: process.env.MODE,
   },
