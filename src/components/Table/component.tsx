@@ -1,43 +1,42 @@
 import { Post } from "@interfaces/post";
 import { postsAtom } from "@modules/post/atom";
 import { Suspense, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 import styled from "styled-components";
 
 const Component = () => {
-  const posts = useRecoilValue(postsAtom({}));
+  const [query, setQuery] = useState({});
+  const posts = useRecoilValueLoadable(postsAtom(query));
 
-  if (!posts) return;
+  if (posts.state === "loading") return <div>loading...</div>;
 
   return (
-    <Suspense fallback={<div>loading...</div>}>
-      <Wrapper>
-        <TableHeader>
-          <Table cellPadding={0} cellSpacing={0} border={0}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>제목</th>
-                <th>콘텐츠</th>
+    <Wrapper>
+      <TableHeader>
+        <Table cellPadding={0} cellSpacing={0} border={0}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>제목</th>
+              <th>콘텐츠</th>
+            </tr>
+          </thead>
+        </Table>
+      </TableHeader>
+      <TableContent>
+        <Table cellPadding={0} cellSpacing={0} border={0}>
+          <tbody>
+            {posts.contents.map((post: Post) => (
+              <tr key={post.id}>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
+                <td>{post.contents}</td>
               </tr>
-            </thead>
-          </Table>
-        </TableHeader>
-        <TableContent>
-          <Table cellPadding={0} cellSpacing={0} border={0}>
-            <tbody>
-              {posts.map((post: Post) => (
-                <tr key={post.id}>
-                  <td>{post.id}</td>
-                  <td>{post.title}</td>
-                  <td>{post.contents}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </TableContent>
-      </Wrapper>
-    </Suspense>
+            ))}
+          </tbody>
+        </Table>
+      </TableContent>
+    </Wrapper>
   );
 };
 

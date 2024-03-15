@@ -10,6 +10,7 @@ export const postsAtom = selectorFamily({
       return posts;
     } catch (err) {
       console.log(err);
+      throw err;
     }
   },
 });
