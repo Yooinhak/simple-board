@@ -1,15 +1,10 @@
-import { Post } from "@interfaces/post";
-import { postsAtom } from "@modules/post/atom";
-import { Suspense, useState } from "react";
-import { useRecoilValue, useRecoilValueLoadable } from "recoil";
-import styled from "styled-components";
+import { Post } from '@interfaces/post';
+import { postsAtom } from '@modules/post/atom';
+import { Suspense, useState } from 'react';
+import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
+import styled from 'styled-components';
 
 const Component = () => {
-  const [query, setQuery] = useState({});
-  const posts = useRecoilValueLoadable(postsAtom(query));
-
-  if (posts.state === "loading") return <div>loading...</div>;
-
   return (
     <Wrapper>
       <TableHeader>
@@ -26,13 +21,13 @@ const Component = () => {
       <TableContent>
         <Table cellPadding={0} cellSpacing={0} border={0}>
           <tbody>
-            {posts.contents.map((post: Post) => (
+            {/* {posts.contents.map((post: Post) => (
               <tr key={post.id}>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
                 <td>{post.contents}</td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </Table>
       </TableContent>
