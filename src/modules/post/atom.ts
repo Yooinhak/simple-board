@@ -1,6 +1,11 @@
 import { Post } from '@interfaces/post';
 import { atom, selector, selectorFamily } from 'recoil';
 
+export const testAtom = atom({
+  key: 'POST_LIST',
+  default: [],
+});
+
 export const postsAtom = selectorFamily({
   key: 'POSTS',
   get: (query) => async () => {

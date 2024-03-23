@@ -4,28 +4,7 @@ import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Table from '@components/Table';
 
-export const getServerSideProps = async ({}) => {
-  let posts = [];
-  try {
-    const response = await fetch('http://localhost:3000/api/posts');
-    if (!response.ok) {
-      throw new Error('Failed to fetch posts');
-    }
-    posts = await response.json();
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      initialData: {
-        posts,
-      },
-    },
-  };
-};
-
-export default function Home({ initialData }) {
-  console.log(initialData);
+export default function Home({}) {
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
 
