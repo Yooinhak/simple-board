@@ -1,21 +1,18 @@
-import type { AppProps } from 'next/app';
-import theme from '@components/theme';
-import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '@components/GlobalStyle';
-import Head from 'next/head';
-import { RecoilRoot } from 'recoil';
-import { atomMapKey } from '@modules/atomMap';
-import { testAtom } from '@modules/post/atom';
+import type { AppProps } from "next/app";
+import theme from "@components/theme";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "@components/GlobalStyle";
+import Head from "next/head";
+import { RecoilRoot } from "recoil";
+import { atomHydrator } from "@modules/atomMap";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { initialData: pageInitialData } = pageProps;
-  const initialRecoilState = {};
-  // console.log(pageInitialData);
+  const { initialData } = pageProps;
 
   return (
     <RecoilRoot
       initializeState={({ set }) => {
-        set(testAtom, pageInitialData['posts']);
+        atomHydrator({ initialData, recoilSetter: set });
       }}
     >
       <ThemeProvider theme={theme}>

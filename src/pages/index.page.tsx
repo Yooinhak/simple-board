@@ -1,12 +1,34 @@
-import getConfig from 'next/config';
-import Head from 'next/head';
-import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import Table from '@components/Table';
+import getConfig from "next/config";
+import Head from "next/head";
+import { useState } from "react";
+import styled, { keyframes } from "styled-components";
+import Table from "@components/Table";
+import { atomKeyMap } from "@modules/atomMap";
+
+export const getServerSideProps = async ({}) => {
+  let posts = [];
+  try {
+    const response = await fetch("http://localhost:3000/api/posts");
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    posts = await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+
+  return {
+    props: {
+      initialData: {
+        [atomKeyMap.postList]: posts,
+      },
+    },
+  };
+};
 
 export default function Home({}) {
-  const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
 
   return (
     <>

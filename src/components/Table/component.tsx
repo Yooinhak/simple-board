@@ -1,10 +1,12 @@
-import { Post } from '@interfaces/post';
-import { postsAtom } from '@modules/post/atom';
-import { Suspense, useState } from 'react';
-import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
-import styled from 'styled-components';
+import { Post } from "@interfaces/post";
+import { postListAtom } from "@modules/post/atom";
+import { Suspense, useState } from "react";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
+import styled from "styled-components";
 
 const Component = () => {
+  const postList = useRecoilValue(postListAtom);
+  console.log(postList);
   return (
     <Wrapper>
       <TableHeader>
@@ -21,13 +23,13 @@ const Component = () => {
       <TableContent>
         <Table cellPadding={0} cellSpacing={0} border={0}>
           <tbody>
-            {/* {posts.contents.map((post: Post) => (
+            {postList.map((post: Post) => (
               <tr key={post.id}>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
                 <td>{post.contents}</td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </Table>
       </TableContent>

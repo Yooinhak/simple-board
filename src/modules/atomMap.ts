@@ -1,8 +1,21 @@
-import { testAtom } from './post/atom';
+import { postListAtom } from "./post/atom";
 
-const atomMapKey = testAtom.key;
+const atomKeyMap = Object.freeze({
+  postList: postListAtom.key,
+});
 
-const atomMap = {};
+const atomMap = {
+  [atomKeyMap.postList]: postListAtom,
+};
 
-export { atomMapKey };
+const atomHydrator = ({ initialData, recoilSetter }) => {
+  Object.keys(atomMap).forEach((key) => {
+    if (initialData[key] !== undefined) {
+      recoilSetter(atomMap[key], initialData[key]);
+    }
+  });
+};
+
+export { atomHydrator, atomKeyMap };
+
 export default atomMap;
