@@ -1,6 +1,4 @@
-import getConfig from "next/config";
 import Head from "next/head";
-import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";

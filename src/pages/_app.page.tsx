@@ -5,8 +5,29 @@ import GlobalStyle from "@components/GlobalStyle";
 import Head from "next/head";
 import { RecoilRoot } from "recoil";
 import { atomHydrator } from "@modules/atomMap";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import GlobalLoading from "@components/GlobalLoading";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
+
   return (
     <RecoilRoot
       initializeState={({ set }) => {
@@ -18,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Head>
           <title>Simple_board</title>
         </Head>
-
+        {loading && <GlobalLoading />}
         <Component {...pageProps} />
       </ThemeProvider>
     </RecoilRoot>
