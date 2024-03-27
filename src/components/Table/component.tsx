@@ -1,3 +1,4 @@
+import FancyInput from "@components/FancyInput";
 import { Post } from "@interfaces/post";
 import { postListAtom } from "@modules/post/atom";
 import { useRouter } from "next/router";
@@ -24,6 +25,7 @@ const Component = () => {
       >
         검색
       </button>
+      <FancyInput />
       <TableHeader>
         <Table>
           <thead>
