@@ -1,31 +1,15 @@
-import FancyInput from "@components/FancyInput";
 import { Post } from "@interfaces/post";
 import { postListAtom } from "@modules/post/atom";
-import { useRouter } from "next/router";
-import { Suspense, useState } from "react";
-import { useRecoilValue, useRecoilValueLoadable } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 const Component = () => {
-  const router = useRouter();
-
   // ATOM
   const postList = useRecoilValue(postListAtom);
   // ATOM [E]
 
   return (
     <Wrapper>
-      <button
-        onClick={() => {
-          router.replace({
-            pathname: router.pathname,
-            query: router.query,
-          });
-        }}
-      >
-        검색
-      </button>
-      <FancyInput />
       <TableHeader>
         <Table>
           <thead>

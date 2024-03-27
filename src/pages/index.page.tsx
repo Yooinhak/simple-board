@@ -1,18 +1,21 @@
-import Head from "next/head";
 import styled, { keyframes } from "styled-components";
-import Table from "@components/Table";
+import Table, { TableV2 } from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
+import CategoryItems from "@components/CategoryItems";
 
 export default function Home({}) {
   return (
-    <>
-      <Head>
-        <title>Simple_board</title>
-      </Head>
-      <Wrapper>
-        <Table />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Box>
+        <LeftSection>
+          <CategoryItems />
+        </LeftSection>
+
+        <RightSection>
+          <TableV2 />
+        </RightSection>
+      </Box>
+    </Wrapper>
   );
 }
 
@@ -46,6 +49,9 @@ const Gradient = keyframes`
 `;
 
 const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+
   background: linear-gradient(-45deg, #fdab61, #c97bcc, #50bec9);
   background-size: 400% 400%;
   animation: ${Gradient} 5s ease infinite;
@@ -56,4 +62,20 @@ const Wrapper = styled.div`
   padding: 0;
   margin: 0px;
   padding: 32px;
+`;
+const Box = styled.div`
+  width: 100%;
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #000;
+  background-color: #fff;
+`;
+const LeftSection = styled.div`
+  padding: 8px;
+
+  border-right: 1px solid #000;
+`;
+const RightSection = styled.div`
+  width: 100%;
+  padding: 8px;
 `;
