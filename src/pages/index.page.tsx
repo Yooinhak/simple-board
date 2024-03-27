@@ -5,7 +5,20 @@ import styled, { keyframes } from "styled-components";
 import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 
-export const getServerSideProps = async ({}) => {
+export default function Home({}) {
+  return (
+    <>
+      <Head>
+        <title>Simple_board</title>
+      </Head>
+      <Wrapper>
+        <Table />
+      </Wrapper>
+    </>
+  );
+}
+
+Home.getInitialProps = async () => {
   let posts = [];
   try {
     const response = await fetch("http://localhost:3000/api/posts");
@@ -18,33 +31,9 @@ export const getServerSideProps = async ({}) => {
   }
 
   return {
-    props: {
-      initialData: {
-        [atomKeyMap.postList]: posts,
-      },
-    },
+    [atomKeyMap.postList]: posts,
   };
 };
-
-export default function Home({}) {
-  const [title, setTitle] = useState("");
-  const [contents, setContents] = useState("");
-
-  return (
-    <>
-      <Head>
-        <title>Simple_board</title>
-      </Head>
-      <Wrapper>
-        {/* <button onClick={fetchPosts}>test</button>
-        <button onClick={createPost}>만들기</button>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input value={contents} onChange={(e) => setContents(e.target.value)} /> */}
-        <Table />
-      </Wrapper>
-    </>
-  );
-}
 
 const Gradient = keyframes`
   0% {

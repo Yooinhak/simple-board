@@ -7,12 +7,10 @@ import { RecoilRoot } from "recoil";
 import { atomHydrator } from "@modules/atomMap";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { initialData } = pageProps;
-
   return (
     <RecoilRoot
       initializeState={({ set }) => {
-        atomHydrator({ initialData, recoilSetter: set });
+        atomHydrator({ initialData: pageProps, recoilSetter: set });
       }}
     >
       <ThemeProvider theme={theme}>

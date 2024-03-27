@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Component = () => {
   const postList = useRecoilValue(postListAtom);
-  console.log(postList);
+
   return (
     <Wrapper>
       <TableHeader>

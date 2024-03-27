@@ -8,7 +8,7 @@ const atomMap = {
   [atomKeyMap.postList]: postListAtom,
 };
 
-const atomHydrator = ({ initialData, recoilSetter }) => {
+const atomHydrator = ({ initialData, recoilSetter }: any) => {
   Object.keys(atomMap).forEach((key) => {
     if (initialData[key] !== undefined) {
       recoilSetter(atomMap[key], initialData[key]);
