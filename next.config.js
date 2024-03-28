@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
   // pageExtensions: ['page.jsx', 'api.js'],
   compiler: {
