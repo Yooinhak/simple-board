@@ -15,6 +15,7 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     appVersion: process.env.APP_VERSION,
+    apiHost: process.env.API_HOST,
   },
 };
 
