@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import Table, { TableV2 } from "@components/Table";
+import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
 
@@ -12,7 +12,7 @@ export default function Home({}) {
         </LeftSection>
 
         <RightSection>
-          <TableV2 />
+          <Table />
         </RightSection>
       </Box>
     </Wrapper>
@@ -67,8 +67,8 @@ const Box = styled.div`
   width: 100%;
   display: flex;
   border-radius: 8px;
-  border: 1px solid #000;
-  background-color: #fff;
+  background-color: #f8f9fd;
+  box-shadow: 0 0 16px #555;
 `;
 const LeftSection = styled.div`
   padding: 8px;

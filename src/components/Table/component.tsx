@@ -23,7 +23,7 @@ const Component = () => {
       </TableHeader>
       <TableContent>
         <Table>
-          <tbody>
+          <Tbody>
             {postList.map((post: Post) => (
               <tr key={post.id}>
                 <td>{post.id}</td>
@@ -31,7 +31,7 @@ const Component = () => {
                 <td>{post.contents}</td>
               </tr>
             ))}
-          </tbody>
+          </Tbody>
         </Table>
       </TableContent>
     </Wrapper>
@@ -48,13 +48,14 @@ const Wrapper = styled.div`
 const Table = styled.table`
   width: 100%;
   table-layout: fixed;
+  border-collapse: collapse;
 
   th {
     padding: 20px 15px;
     text-align: left;
     font-weight: 500;
     font-size: 12px;
-    color: #fff;
+    color: #000;
     text-transform: uppercase;
   }
   td {
@@ -63,18 +64,38 @@ const Table = styled.table`
     vertical-align: middle;
     font-weight: 300;
     font-size: 12px;
-    color: #fff;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    color: #000;
   }
 `;
 const TableHeader = styled.div`
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #fff;
+  border-bottom: 4px solid #eceffa;
+  border-radius: 8px;
 `;
 const TableContent = styled.div`
   height: 300px;
   overflow-x: auto;
   margin-top: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+`;
+const Tbody = styled.tbody`
+  & > tr {
+    margin-bottom: 10px;
+    border-bottom: 4px solid #f8f9fd;
+
+    & > td {
+      background-color: #fff;
+
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
 `;
 
 export default Component;
