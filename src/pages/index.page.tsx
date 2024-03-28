@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
+import getConfig from "next/config";
 
 export default function Home({}) {
   return (
@@ -20,9 +21,11 @@ export default function Home({}) {
 }
 
 Home.getInitialProps = async () => {
+  const { apiHost } = getConfig().publicRuntimeConfig;
+
   let posts = [];
   try {
-    const response = await fetch("http://localhost:3000/api/posts");
+    const response = await fetch(`${apiHost}/posts`);
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
