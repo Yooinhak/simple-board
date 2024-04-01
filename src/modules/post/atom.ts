@@ -1,7 +1,7 @@
 import { Post } from "@interfaces/post";
 import { atom, selector, selectorFamily } from "recoil";
 
-export const postListAtom = atom({
+export const postListAtom = atom<Post[]>({
   key: "POST_LIST",
   default: [],
 });

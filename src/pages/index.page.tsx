@@ -3,7 +3,6 @@ import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
 import getConfig from "next/config";
-import Select from "@components/Select";
 
 export default function Home({}) {
   return (

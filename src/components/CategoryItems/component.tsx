@@ -1,4 +1,5 @@
 import FancyButton from "@components/FancyButton";
+import { Category } from "@interfaces/category";
 import { categoryListAtom } from "@modules/category/atom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
@@ -8,7 +9,7 @@ const Component = () => {
   return (
     <Wrapper>
       <FancyButton label={"전체"} />
-      {categories.map((category) => (
+      {categories.map((category: Category) => (
         <FancyButton label={category.name} key={category.id} />
       ))}
     </Wrapper>
