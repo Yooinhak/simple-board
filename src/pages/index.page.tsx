@@ -25,18 +25,23 @@ Home.getInitialProps = async () => {
   const { apiHost } = getConfig().publicRuntimeConfig;
 
   let posts = [];
+  let categories = [];
   try {
     const response = await fetch(`${apiHost}/posts`);
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
     posts = await response.json();
+
+    const categoriesResponse = await fetch(`${apiHost}/categories`);
+    categories = await categoriesResponse.json();
   } catch (err) {
     console.log(err);
   }
 
   return {
     [atomKeyMap.postList]: posts,
+    [atomKeyMap.categoryList]: categories,
   };
 };
 

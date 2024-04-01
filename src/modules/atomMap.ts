@@ -1,11 +1,14 @@
+import { categoryListAtom } from "./category/atom";
 import { postListAtom } from "./post/atom";
 
 const atomKeyMap = Object.freeze({
   postList: postListAtom.key,
+  categoryList: categoryListAtom.key,
 });
 
 const atomMap = {
   [atomKeyMap.postList]: postListAtom,
+  [atomKeyMap.categoryList]: categoryListAtom,
 };
 
 const atomHydrator = ({ initialData, recoilSetter }: any) => {
