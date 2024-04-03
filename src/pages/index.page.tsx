@@ -15,6 +15,8 @@ export default function Home({}) {
       <Box>
         <LeftSection>
           <CategoryItems />
+
+          <StyledButton>+</StyledButton>
         </LeftSection>
 
         <RightSection>
@@ -91,6 +93,9 @@ const Box = styled.div`
   opacity: 0.9;
 `;
 const LeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 8px;
 
   border-right: 1px solid #000;
@@ -98,4 +103,13 @@ const LeftSection = styled.div`
 const RightSection = styled.div`
   width: 100%;
   padding: 8px;
+`;
+const StyledButton = styled.button`
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(-45deg, #fdab61, #c97bcc, #50bec9);
 `;
