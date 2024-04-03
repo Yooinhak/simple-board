@@ -3,8 +3,8 @@ import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
 import getConfig from "next/config";
-import FancyInput, { FancyInputWidthController } from "@components/FancyInput";
-import { FormProvider, useForm } from "react-hook-form";
+import { FancyInputWidthController } from "@components/FancyInput";
+import { useForm } from "react-hook-form";
 import Form from "@components/Form";
 
 export default function Home({}) {
@@ -20,7 +20,6 @@ export default function Home({}) {
         <RightSection>
           <Form form={form} onSubmit={(data) => console.log(data)}>
             <FancyInputWidthController name={"title"} />
-            <button type={"submit"}>test</button>
           </Form>
 
           <Table />
