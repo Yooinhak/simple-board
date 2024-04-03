@@ -1,7 +1,16 @@
+import { ChangeEvent } from "react";
 import styled from "styled-components";
 
-const Component = () => {
-  return <Input />;
+interface Props {
+  id: string;
+  value: string;
+  onChange:
+    | React.ChangeEventHandler<HTMLInputElement>
+    | ((event: ChangeEvent<HTMLInputElement>) => void);
+}
+
+const Component = ({ id, value, onChange }: Props) => {
+  return <Input id={id} value={value} onChange={onChange} />;
 };
 
 const Input = styled.input`

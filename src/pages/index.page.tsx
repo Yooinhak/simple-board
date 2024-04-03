@@ -3,8 +3,13 @@ import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
 import getConfig from "next/config";
+import FancyInput, { FancyInputWidthController } from "@components/FancyInput";
+import { FormProvider, useForm } from "react-hook-form";
+import Form from "@components/Form";
 
 export default function Home({}) {
+  const form = useForm();
+
   return (
     <Wrapper>
       <Box>
@@ -13,6 +18,11 @@ export default function Home({}) {
         </LeftSection>
 
         <RightSection>
+          <Form form={form} onSubmit={(data) => console.log(data)}>
+            <FancyInputWidthController name={"title"} />
+            <button type={"submit"}>test</button>
+          </Form>
+
           <Table />
         </RightSection>
       </Box>
@@ -59,6 +69,7 @@ const Gradient = keyframes`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   background: linear-gradient(-45deg, #fdab61, #c97bcc, #50bec9);
   background-size: 400% 400%;
@@ -73,10 +84,12 @@ const Wrapper = styled.div`
 `;
 const Box = styled.div`
   width: 100%;
+  max-width: 1280px;
   display: flex;
   border-radius: 8px;
   background-color: #f8f9fd;
   box-shadow: 0 0 16px #555;
+  opacity: 0.9;
 `;
 const LeftSection = styled.div`
   padding: 8px;

@@ -52,14 +52,15 @@ const Button = styled.button`
     width: 0%;
     height: 2px;
   }
-  &:hover::before {
-    height: 100%;
-  }
-  &:hover::after {
-    width: 100%;
-  }
+
   &:hover {
     background: transparent;
+    &::before {
+      height: 100%;
+    }
+    &::after {
+      width: 100%;
+    }
   }
 `;
 const Label = styled.span`
@@ -67,9 +68,7 @@ const Label = styled.span`
   display: block;
   width: 100%;
   height: 100%;
-  &:hover {
-    color: #c797eb;
-  }
+
   &::before,
   &::after {
     position: absolute;
@@ -87,11 +86,14 @@ const Label = styled.span`
     height: 2px;
     width: 0%;
   }
-  &:hover::before {
-    height: 100%;
-  }
-  &:hover::after {
-    width: 100%;
+  &:hover {
+    color: #c797eb;
+    &::before {
+      height: 100%;
+    }
+    &::after {
+      width: 100%;
+    }
   }
 `;
 
