@@ -1,17 +1,16 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface Props {
-  size: string;
+  size: "xs" | "sm" | "md" | "lg" | "xl";
   onBackdropClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  isOpen: boolean;
   children: React.ReactNode;
 }
 
-const Component = ({ size, onBackdropClick, isOpen, children }: Props) => {
+const Component = ({ size, onBackdropClick, children }: Props) => {
   return (
     <Wrapper>
       <Backdrop onClick={onBackdropClick} />
-      <ModalBox>{children}</ModalBox>
+      <ModalBox $size={size}>{children}</ModalBox>
     </Wrapper>
   );
 };
@@ -60,9 +59,23 @@ const Backdrop = styled.div`
   animation: ${BlurIn} 0.5s ease-in-out;
 `;
 
-const ModalBox = styled.div`
-  width: 600px;
-  height: 400px;
+const getModalBoxWidth = (size: string) => {
+  switch (size) {
+    case "xs":
+      return "400px";
+    case "sm":
+      return "600px";
+    case "md":
+      return "800px";
+    case "lg":
+      return "968px";
+    case "xl":
+      return "1200px";
+  }
+};
+
+const ModalBox = styled.div<{ $size: string }>`
+  width: ${({ $size }) => getModalBoxWidth($size)};
   min-width: 200px;
   position: relative;
   z-index: 10002;

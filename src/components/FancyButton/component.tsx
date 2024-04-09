@@ -11,6 +11,7 @@ const Component = ({ label }: Button) => {
     </Button>
   );
 };
+
 const Button = styled.button`
   width: 130px;
   height: 40px;
@@ -28,8 +29,8 @@ const Button = styled.button`
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
 
-  background-color: #f0ecfc;
-  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
+  background-color: #fff;
+  background-image: linear-gradient(315deg, #fff 0%, #c797eb 74%);
   line-height: 42px;
   padding: 0;
   border: none;

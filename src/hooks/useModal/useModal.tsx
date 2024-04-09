@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function useModal(size: string) {
+export default function useModal(size: "xs" | "sm" | "md" | "lg" | "xl") {
   const [isOpen, setOpen] = useState(false);
 
   const open = useCallback(() => {
@@ -27,11 +27,7 @@ export default function useModal(size: string) {
   const ModalWrapper = useCallback(
     ({ children }: Props) =>
       isOpen ? (
-        <Modal
-          size={size}
-          onBackdropClick={handleBackdropClick}
-          isOpen={isOpen}
-        >
+        <Modal size={size} onBackdropClick={handleBackdropClick}>
           {children}
         </Modal>
       ) : null,

@@ -6,6 +6,7 @@ import getConfig from "next/config";
 import { FancyInputWidthController } from "@components/FancyInput";
 import { useForm } from "react-hook-form";
 import Form from "@components/Form";
+import CreateCategoryButton from "@components/CreateCategoryButton";
 
 export default function Home({}) {
   const form = useForm();
@@ -16,7 +17,7 @@ export default function Home({}) {
         <LeftSection>
           <CategoryItems />
 
-          <StyledButton>+</StyledButton>
+          <CreateCategoryButton />
         </LeftSection>
 
         <RightSection>
@@ -103,13 +104,4 @@ const LeftSection = styled.div`
 const RightSection = styled.div`
   width: 100%;
   padding: 8px;
-`;
-const StyledButton = styled.button`
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  color: #fff;
-  background: linear-gradient(-45deg, #fdab61, #c97bcc, #50bec9);
 `;
