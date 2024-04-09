@@ -7,6 +7,7 @@ import { FancyInputWidthController } from "@components/FancyInput";
 import { useForm } from "react-hook-form";
 import Form from "@components/Form";
 import CreateCategoryButton from "@components/CreateCategoryButton";
+import CreatePostButton from "@components/CreatePostButton";
 
 export default function Home({}) {
   const form = useForm();
@@ -24,8 +25,9 @@ export default function Home({}) {
           <Form form={form} onSubmit={(data) => console.log(data)}>
             <FancyInputWidthController name={"title"} />
           </Form>
-
           <Table />
+
+          <CreatePostButton />
         </RightSection>
       </Box>
     </Wrapper>

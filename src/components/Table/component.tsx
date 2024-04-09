@@ -41,9 +41,13 @@ const Component = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-top: 8px;
+  height: 300px;
+`;
+const TableContent = styled.div`
+  overflow-x: auto;
+  margin-top: 0px;
 `;
 const Table = styled.table`
   width: 100%;
@@ -71,11 +75,6 @@ const TableHeader = styled.div`
   background-color: #fff;
   border-bottom: 4px solid #eceffa;
   border-radius: 8px;
-`;
-const TableContent = styled.div`
-  height: 300px;
-  overflow-x: auto;
-  margin-top: 0px;
 `;
 const Tbody = styled.tbody`
   & > tr {
