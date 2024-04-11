@@ -8,7 +8,7 @@ import { atomHydrator } from "@modules/atomMap";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import GlobalLoading from "@components/GlobalLoading";
-import FancyInput from "@components/FancyInput";
+import FancyInput from "@components/Input";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import useModal from "@hooks/useModal";
 import Form from "@components/Form";
 import { useForm } from "react-hook-form";
-import { FancyInputWidthController } from "@components/FancyInput";
+import { FancyInputWidthController } from "@components/Input";
 import { useSetRecoilState } from "recoil";
 import { postListAtom } from "@modules/post/atom";
 
@@ -45,6 +45,7 @@ const Component = () => {
       </StyledButton>
 
       <ModalWrapper>
+        <Title>게시글 생성</Title>
         <Form form={form} onSubmit={handleCreatePost}>
           <FancyInputWidthController name={"title"} />
           <FancyInputWidthController name={"contents"} />
@@ -66,6 +67,13 @@ const StyledButton = styled.button`
   border-radius: 50%;
   color: #fff;
   background: linear-gradient(-45deg, #fdab61, #c97bcc, #50bec9);
+`;
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 32px;
+  background: linear-gradient(#fdab61, #c97bcc, #50bec9);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export default Component;

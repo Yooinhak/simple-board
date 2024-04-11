@@ -3,7 +3,7 @@ import Table from "@components/Table";
 import { atomKeyMap } from "@modules/atomMap";
 import CategoryItems from "@components/CategoryItems";
 import getConfig from "next/config";
-import { FancyInputWidthController } from "@components/FancyInput";
+import { FancyInputWidthController } from "@components/Input";
 import { useForm } from "react-hook-form";
 import Form from "@components/Form";
 import CreateCategoryButton from "@components/CreateCategoryButton";
